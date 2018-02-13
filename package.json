@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "scripts": {
+    "eslint": "eslint .",
+    "start": "electron ./app",
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "eslint": "^3.12.2",
+    "mocha": "^3.2.0",
+    "ncp": "^2.0.0",
+    "promisify-node": "^0.4.0",
+    "tmp": "0.0.31"
+  },
+  "dependencies": {
+    "electron": "^1.8.2",
+    "ftpd": "^0.2.15"
+  }
+}
