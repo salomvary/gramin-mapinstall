@@ -8,10 +8,8 @@
     "fs-extra": "^1.0.0",
     "moment": "^2.17.1",
     "node-7z": "^0.4.0",
-    "promise-ftp": "^1.2.14",
     "promisify-node": "^0.4.0",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "underscore.string": "^3.3.4"
+    "react-dom": "^16.2.0"
   }
 }
