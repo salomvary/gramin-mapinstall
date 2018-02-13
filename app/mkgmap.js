@@ -1,12 +1,11 @@
 'use strict'
 
 const Path = require('path')
-const { exec } = require('child_process')
+const {exec} = require('child_process')
 
 const mkgmapBase = Path.join(__dirname, 'vendor/mkgmap-r3741')
 
-module.exports = function(folder, {typ, description}) {
-
+module.exports = function (folder, {typ, description}) {
   // TODO do proper shell escaping and glob expansion
   const command = `
     java -Xmx2000M \\
@@ -24,10 +23,7 @@ module.exports = function(folder, {typ, description}) {
     exec(command, (error, stdout, stderr) => {
       console.log(stdout)
       console.error(stderr)
-      if (error)
-        reject(error)
-      else
-        resolve(Path.join(folder, 'gmapsupp.img'))
+      if (error) { reject(error) } else { resolve(Path.join(folder, 'gmapsupp.img')) }
     })
   })
 }

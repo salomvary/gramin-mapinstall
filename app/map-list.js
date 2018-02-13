@@ -5,11 +5,11 @@ const React = require('react')
 
 const DOM = React.DOM
 
-module.exports = function MapList(props) {
+module.exports = function MapList (props) {
   let rows
   let messages
 
-  if (props.repos)
+  if (props.repos) {
     rows = props.repos.reduce((rows, repo) => {
       const title = DOM.tr({key: repo.name},
         DOM.th({className: ''},
@@ -30,20 +30,21 @@ module.exports = function MapList(props) {
       })
       return rows.concat(title).concat(files)
     }, [])
-  else if (props.error)
+  } else if (props.error) {
     messages = DOM.div({className: 'messages'},
       DOM.div({
         className: 'message',
         children: props.error
       })
     )
-  else
+  } else {
     messages = DOM.div({className: 'messages'},
       DOM.div({
         className: 'message',
         children: 'Loading maps…'
       })
     )
+  }
 
   return (
     DOM.div(null,

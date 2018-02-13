@@ -9,13 +9,13 @@ const repos = require('./repos')
 const shell = require('electron').shell
 
 class Index extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.props = props
     this.state = {}
   }
 
-  render() {
+  render () {
     return React.createElement(MapList, {
       onInstallClick: onInstallClick,
       repos: this.state.repos,
@@ -36,19 +36,19 @@ loadRepos()
     index.setState({error: 'Error loading maps :('})
   })
 
-function loadRepos() {
+function loadRepos () {
   const promises = repos.map(repo => {
     return Promise.all([repo, listRepo(repo)])
   })
 
   return Promise.all(promises).then(results => {
     return results.map(([repo, files]) => {
-      return Object.assign({}, repo, { files })
+      return Object.assign({}, repo, {files})
     })
   })
 }
 
-function onInstallClick(repo, file) {
+function onInstallClick (repo, file) {
   installMap(file.url, '/tmp/garmin')
 }
 
