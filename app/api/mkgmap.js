@@ -1,11 +1,9 @@
-'use strict'
-
-const Path = require('path')
+const path = require('path')
 const {exec} = require('child_process')
 
-const mkgmapBase = Path.join(__dirname, 'vendor/mkgmap-r3741')
+const mkgmapBase = path.join(__dirname, '../vendor/mkgmap-r4125')
 
-module.exports = function (folder, {typ, description}) {
+module.exports = function mkgmap (inputDir, outputDir, {typ, description}) {
   // TODO do proper shell escaping and glob expansion
   const command = `
     java -Xmx2000M \\
@@ -15,15 +13,20 @@ module.exports = function (folder, {typ, description}) {
     --description="${description}" \\
     --series-name="${description}" \\
     --family-name="${description}" \\
-    --output-dir="${folder}" \\
-    --gmapsupp "${folder}"/*.img \\
-    "${folder}/${typ}"
+    --output-dir="${outputDir}" \\
+    --gmapsupp \\
+    "${inputDir}"/*.img \\
+    "${inputDir}/${typ}"
     `
   return new Promise((resolve, reject) => {
     exec(command, (error, stdout, stderr) => {
       console.log(stdout)
       console.error(stderr)
-      if (error) { reject(error) } else { resolve(Path.join(folder, 'gmapsupp.img')) }
+      if (error) {
+        reject(error)
+      } else {
+        resolve(path.join(outputDir, 'gmapsupp.img'))
+      }
     })
   })
 }
