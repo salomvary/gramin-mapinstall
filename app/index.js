@@ -3,11 +3,17 @@ const {Provider} = require('react-redux')
 const React = require('react')
 const ReactDOM = require('react-dom')
 const shell = require('electron').shell
-
-const {createStore} = require('redux')
+const {createStore, applyMiddleware} = require('redux')
 const app = require('./reducers')
+const thunkMiddleware = require('redux-thunk').default
+const {loadMaps} = require('./actions')
 
-let store = createStore(app)
+let store = createStore(
+  app,
+  applyMiddleware(thunkMiddleware)
+)
+
+store.dispatch(loadMaps())
 
 ReactDOM.render(
   React.createElement(Provider, {store}, React.createElement(App)),

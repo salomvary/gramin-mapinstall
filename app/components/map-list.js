@@ -12,9 +12,9 @@ module.exports = function MapList (props) {
         onClick: () => props.onInstallClick(map.id),
         children: 'Install'
       })
-      return e('tr', {key: map.id},
-        e('td', {className: ''}, map.title),
-        e('td', {className: ''}, moment(map.date).calendar()),
+      return e('tr', {key: map.name},
+        e('td', {className: ''}, map.name),
+        e('td', {className: ''}, moment(map.updated).calendar()),
         e('td', {className: 'actions'}, button)
       )
     })

@@ -1,16 +1,15 @@
-const {INSTALL_MAP} = require('../constants/action-types')
+const {INSTALL_MAP, RECEIVE_MAPS} = require('../constants/action-types')
 
 const initialState = {
-  maps: [
-    {id: 1, title: 'Test Map One'},
-    {id: 2, title: 'Test Map Two'}
-  ]
+  maps: []
 }
 
 function app (state = initialState, action) {
   switch (action.type) {
     case INSTALL_MAP:
       return state
+    case RECEIVE_MAPS:
+      return Object.assign({}, state, {maps: action.maps})
     default:
       return state
   }
