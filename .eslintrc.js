@@ -10,6 +10,7 @@ module.exports = {
   },
   "rules": {
     "array-bracket-spacing": ["error", "never"],
+    "no-undef": "error",
     "object-curly-spacing": ["error", "never"]
   }
 };
