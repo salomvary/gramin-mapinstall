@@ -7,22 +7,24 @@ const stat = promisify(fs.stat)
 
 const mapsFolder = path.join(process.env.HOME, 'Maps')
 
-function listMaps () {
-  return readdir(mapsFolder)
-    .then((names) => readChildren(mapsFolder, names))
+async function listMaps () {
+  const names = await readdir(mapsFolder)
+  return readChildren(mapsFolder, names)
 }
 
-function readChildren (parent, names) {
-  return Promise.all(names.map((name) => {
-    const child = path.join(parent, name)
-    return Promise.all([{name, path: child}, stat(child)])
-  })).then((results) => {
-    return results
-      .filter(([result, stat]) => stat.isDirectory())
-      .map(([result, stat]) => {
-        return Object.assign(result, {updated: stat.birthtime})
-      })
-  })
+async function readChildren (parent, names) {
+  const children = names.map((name) => ({
+    name,
+    path: path.join(parent, name)
+  }))
+
+  const stats = await Promise.all(children.map(({path}) => stat(path)))
+
+  return children
+    .filter((child, i) => stats[i].isDirectory())
+    .map((child, i) => Object.assign(child, {
+      updated: stats[i].birthtime
+    }))
 }
 
 module.exports = listMaps
