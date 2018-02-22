@@ -15,6 +15,20 @@ function receiveMaps (maps) {
   }
 }
 
+function receiveDevices (devices) {
+  return {
+    type: ActionTypes.RECEIVE_DEVICES,
+    devices
+  }
+}
+
+function selectDevice (id) {
+  return {
+    type: ActionTypes.SELECT_DEVICE,
+    id
+  }
+}
+
 function loadMaps () {
   return dispatch => {
     return localMaps()
@@ -25,3 +39,5 @@ function loadMaps () {
 module.exports.installMap = installMap
 module.exports.receiveMaps = receiveMaps
 module.exports.loadMaps = loadMaps
+module.exports.receiveDevices = receiveDevices
+module.exports.selectDevice = selectDevice
