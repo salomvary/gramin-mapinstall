@@ -84,6 +84,7 @@ function sleep (time, fn) {
 function getVolumes () {
   if (process.platform === 'darwin') {
     return '/Volumes'
+    // return path.join(__dirname, '../../test/fixtures/device/Volumes')
   } else {
     return '/media/' + process.env.USER
   }

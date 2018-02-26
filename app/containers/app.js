@@ -7,13 +7,14 @@ const {
 
 const mapStateToProps = state => ({
   maps: state.maps,
+  mapsInstalling: state.mapsInstalling,
   selectedDevice: state.selectedDevice,
   devices: state.devices
 })
 
 const mapDispatchToProps = dispatch => ({
   onDeviceSelect: id => dispatch(selectDevice(id)),
-  onInstall: id => dispatch(installMap(id))
+  onInstallClick: mapId => dispatch(installMap(mapId))
 })
 
 module.exports = connect(

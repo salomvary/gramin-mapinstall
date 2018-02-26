@@ -7,10 +7,12 @@ module.exports = function MapList (props) {
 
   if (props.maps) {
     rows = props.maps.map(map => {
+      const isInstalling = props.mapsInstalling.has(map.path)
       const button = e('button', {
         className: 'track-upload-button',
-        onClick: () => props.onInstallClick(map.id),
-        children: 'Install'
+        onClick: () => props.onInstallClick(map.path),
+        disabled: isInstalling,
+        children: isInstalling ? 'Installing...' : 'Install'
       })
       return e('tr', {key: map.name},
         e('td', {className: ''}, map.name),

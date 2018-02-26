@@ -1,9 +1,17 @@
 const ActionTypes = require('../constants/action-types')
 const localMaps = require('../api/local-maps')
+const installMapApi = require('../api/install-map')
 
-function installMap (mapId) {
+function installingMap (mapId) {
   return {
-    type: ActionTypes.INSTALL_MAP,
+    type: ActionTypes.INSTALLING_MAP,
+    mapId
+  }
+}
+
+function installedMap (mapId) {
+  return {
+    type: ActionTypes.INSTALLED_MAP,
     mapId
   }
 }
@@ -33,6 +41,17 @@ function loadMaps () {
   return dispatch => {
     return localMaps()
       .then((maps) => dispatch(receiveMaps(maps)))
+  }
+}
+
+function installMap (mapId) {
+  return (dispatch, getState) => {
+    const {maps, devices, selectedDevice} = getState()
+    const map = maps.find((map) => map.path === mapId)
+    const device = devices.find((device) => device.path === selectedDevice)
+    dispatch(installingMap(mapId))
+    return installMapApi(map, device.path)
+      .then(() => dispatch(installedMap(mapId)))
   }
 }
 

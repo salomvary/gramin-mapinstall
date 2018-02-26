@@ -10,7 +10,8 @@ module.exports = function Index (props) {
       devices: props.devices
     }),
     e(MapList, {
-      onInstallClick: (id) => props.onInstallClick(id),
+      onInstallClick: (mapId) => props.onInstallClick(mapId),
+      mapsInstalling: props.mapsInstalling,
       maps: props.maps,
       error: props.error
     })]
