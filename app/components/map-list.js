@@ -14,9 +14,15 @@ module.exports = function MapList (props) {
         disabled: isInstalling,
         children: isInstalling ? 'Installing...' : 'Install'
       })
+      const styles = styleSelect({
+        styles: map.styles,
+        value: props.selectedStyles[map.path],
+        onChange: (stylePath) => props.onStyleChange(map.path, stylePath)
+      })
       return e('tr', {key: map.name},
         e('td', {className: ''}, map.name),
         e('td', {className: ''}, moment(map.updated).calendar()),
+        e('td', {className: ''}, styles),
         e('td', {className: 'actions'}, button)
       )
     })
@@ -43,4 +49,18 @@ module.exports = function MapList (props) {
       e('div', {className: 'messages'},
         messages))
   )
+}
+
+function styleSelect ({styles, value, onChange}) {
+  if (styles.length > 1) {
+    const options = styles.map(({name, path}) =>
+      e('option', {key: path, value: path}, name)
+    )
+
+    return e('select', {
+      value: value || '',
+      className: 'styles',
+      onChange: (event) => onChange(event.target.value)
+    }, options)
+  }
 }

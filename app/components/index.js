@@ -11,8 +11,10 @@ module.exports = function Index (props) {
     }),
     e(MapList, {
       onInstallClick: (mapId) => props.onInstallClick(mapId),
+      onStyleChange: (mapPath, stylePath) => props.onStyleChange(mapPath, stylePath),
       mapsInstalling: props.mapsInstalling,
       maps: props.maps,
-      error: props.error
+      error: props.error,
+      selectedStyles: props.selectedStyles
     })]
 }

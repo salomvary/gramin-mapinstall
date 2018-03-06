@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "fs-extra": "^1.0.0",
+    "glob": "^7.1.2",
     "immutable": "^3.8.2",
     "moment": "^2.17.1",
     "node-7z": "^0.4.0",

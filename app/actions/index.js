@@ -37,6 +37,14 @@ function selectDevice (id) {
   }
 }
 
+function selectStyle (mapPath, stylePath) {
+  return {
+    type: ActionTypes.SELECT_STYLE,
+    mapPath,
+    stylePath
+  }
+}
+
 function loadMaps () {
   return dispatch => {
     return localMaps()
@@ -46,11 +54,14 @@ function loadMaps () {
 
 function installMap (mapId) {
   return (dispatch, getState) => {
-    const {maps, devices, selectedDevice} = getState()
+    const {maps, devices, selectedDevice, selectedStyles} = getState()
     const map = maps.find((map) => map.path === mapId)
     const device = devices.find((device) => device.path === selectedDevice)
+    const stylePath = map.styles.length === 1
+      ? map.styles[0].path
+      : selectedStyles[map.path]
     dispatch(installingMap(mapId))
-    return installMapApi(map, device.path)
+    return installMapApi(map, stylePath, device.path)
       .then(() => dispatch(installedMap(mapId)))
   }
 }
@@ -60,3 +71,4 @@ module.exports.receiveMaps = receiveMaps
 module.exports.loadMaps = loadMaps
 module.exports.receiveDevices = receiveDevices
 module.exports.selectDevice = selectDevice
+module.exports.selectStyle = selectStyle

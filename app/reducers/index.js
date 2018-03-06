@@ -3,13 +3,15 @@ const {
   INSTALLED_MAP,
   RECEIVE_DEVICES,
   RECEIVE_MAPS,
-  SELECT_DEVICE
+  SELECT_DEVICE,
+  SELECT_STYLE
 } = require('../constants/action-types')
 
 const initialState = {
   maps: [],
   mapsInstalling: new Set(),
   selectedDevice: null,
+  selectedStyles: {},
   devices: []
 }
 
@@ -39,6 +41,11 @@ function app (state = initialState, action) {
       return Object.assign({}, state, {devices: action.devices, selectedDevice})
     case SELECT_DEVICE:
       return Object.assign({}, state, {selectedDevice: action.id})
+    case SELECT_STYLE:
+      const selectedStyles = Object.assign({}, state.selectedStyles, {
+        [action.mapPath]: action.stylePath
+      })
+      return Object.assign({}, state, {selectedStyles})
     default:
       return state
   }
