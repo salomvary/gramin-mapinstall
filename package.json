@@ -1,6 +1,7 @@
 {
   "name": "gramin-mapinstall",
   "productName": "Gramin MapInstall",
+  "description": "Install maps onto your Garmin GPS device with no hassle",
   "version": "0.0.1",
   "private": true,
   "main": "./app/main.js",
