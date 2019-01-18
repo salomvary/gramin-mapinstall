@@ -5,6 +5,7 @@
   "version": "0.0.1",
   "private": true,
   "main": "./app/main.js",
+  "license": "MIT",
   "scripts": {
     "lint": "eslint .",
     "start": "electron-forge start",
