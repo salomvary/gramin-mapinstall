@@ -61,6 +61,12 @@ a {
   text-decoration: none;
 }
 
+select {
+  height: 34px;
+  font-size: 14px;
+  padding: 9px 10px;
+}
+
 button {
     background-color: #fff;
     border: 1px solid #ccc;
