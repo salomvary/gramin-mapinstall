@@ -4,7 +4,7 @@
   "private": true,
   "main": "./app/main.js",
   "scripts": {
-    "eslint": "eslint .",
+    "lint": "eslint .",
     "start": "electron-forge start",
     "test": "mocha",
     "package": "electron-forge package",
