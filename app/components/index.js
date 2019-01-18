@@ -7,14 +7,14 @@ module.exports = function Index (props) {
     e('div', {class: 'navbar'},
       e('h1', {class: 'navbar-title'},
         'Gramin MapInstall'
-      )
-    ),
-    e('div', {class: 'content'},
+      ),
       e(DeviceList, {
         onChange: (id) => props.onDeviceSelect(id),
         selected: props.selectedDevice,
         devices: props.devices
-      }),
+      })
+    ),
+    e('div', {class: 'content'},
       e(MapList, {
         onInstallClick: (mapId) => props.onInstallClick(mapId),
         onStyleChange: (mapPath, stylePath) => props.onStyleChange(mapPath, stylePath),
