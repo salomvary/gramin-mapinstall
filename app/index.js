@@ -26,7 +26,7 @@ garmin
 
 ReactDOM.render(
   React.createElement(Provider, {store}, React.createElement(App)),
-  document.querySelector('.content')
+  document.querySelector('#app')
 )
 
 document.body.addEventListener('click', event => {
