@@ -30,5 +30,6 @@ install:
 script:
 - npm run lint
 - npm test
-- if test -z "$TRAVIS_TAG"; then npm run make; fi
-after_success: if test -n "$TRAVIS_TAG"; then npm run publish; fi
+- npm run publish
+#- if test -z "$TRAVIS_TAG"; then npm run make; fi
+#after_success: if test -n "$TRAVIS_TAG"; then npm run publish; fi

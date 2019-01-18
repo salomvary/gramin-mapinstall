@@ -11,13 +11,15 @@
     "start": "electron-forge start",
     "test": "mocha",
     "package": "electron-forge package",
-    "make": "electron-forge make"
+    "make": "electron-forge make",
+    "publish": "electron-forge publish"
   },
   "devDependencies": {
     "@electron-forge/cli": "6.0.0-beta.32",
     "@electron-forge/maker-deb": "6.0.0-beta.32",
     "@electron-forge/maker-dmg": "^6.0.0-beta.22",
     "@electron-forge/maker-rpm": "6.0.0-beta.32",
+    "@electron-forge/publisher-github": "^6.0.0-beta.22",
     "electron": "4.0.1",
     "eslint": "^4.19.1",
     "eslint-config-standard": "^11.0.0",
@@ -64,6 +66,18 @@
         {
           "name": "@electron-forge/maker-rpm",
           "config": {}
+        }
+      ],
+      "publishers": [
+        {
+          "name": "@electron-forge/publisher-github",
+          "config": {
+            "prerelease": "true",
+            "repository": {
+              "owner": "salomvary",
+              "name": "gramin-mapinstall"
+            }
+          }
         }
       ]
     }
