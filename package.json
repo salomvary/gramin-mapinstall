@@ -6,19 +6,19 @@
     "test": "mocha"
   },
   "devDependencies": {
-    "eslint": "^4.17.0",
-    "eslint-config-standard": "^11.0.0-beta.0",
-    "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-node": "^6.0.0",
-    "eslint-plugin-promise": "^3.6.0",
-    "eslint-plugin-standard": "^3.0.1",
-    "mocha": "^5.0.0",
-    "mock-fs": "^4.4.2",
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "mocha": "^5.2.0",
+    "mock-fs": "^4.7.0",
     "ncp": "^2.0.0",
-    "promisify-node": "^0.4.0",
-    "tmp": "0.0.31"
+    "promisify-node": "^0.5.0",
+    "tmp": "0.0.33"
   },
   "dependencies": {
-    "electron": "^2.0.0-beta.2"
+    "electron": "^4.0.1"
   }
 }
