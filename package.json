@@ -48,7 +48,8 @@
   "config": {
     "forge": {
       "packagerConfig": {
-        "ignore": "test"
+        "ignore": "test",
+        "executableName": "garmin-mapinstall"
       },
       "makers": [
         {
